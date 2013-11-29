@@ -1,12 +1,41 @@
 var express = require('express');
+var fs = require('fs');
+var path = require('path');
 var app = express();
 
-app.get('/hello.txt', function(req, res){
-  var body = 'Hello World';
-  res.setHeader('Content-Type', 'text/plain');
-  res.setHeader('Content-Length', body.length);
-  res.end(body);
+// app.get('/', function(req, res){
+//   var body = 'Hello World';
+//   res.setHeader('Content-Type', 'text/plain');
+//   res.setHeader('Content-Length', body.length);
+//   res.end(body);
+// });
+
+app.get('/kiosks', function(req, res){
+  var kiosks = [];
+  var kiosksPath = path.join(__dirname, 'kiosks');
+  var dirs = fs.readdirSync(kiosksPath);
+
+  for(i = 0; i < dirs.length; i++){
+    var kioskMeta = fs.readFileSync(path.join(kiosksPath, dirs[i], 'kiosk.json'));
+    
+    var kiosk = JSON.parse(kioskMeta);
+    kiosk.path = "kiosks/" + dirs[i];
+    
+    kiosks.push(kiosk);
+  }
+
+  res.setHeader('Content-Type', 'application/json');
+  res.json(kiosks);  
 });
 
+app.get('/kiosks/:name', function(req, res, name){
+  var kiosk = {}
+  kiosk.err = "kiosk not found";
+  
+  res.setHeader('Content-Type', 'application/json');
+  res.status(404).json(kiosk);
+});
+
+app.use(express.static(__dirname + '/public'));
 app.listen(3000);
 console.log('Listening on port 3000');
