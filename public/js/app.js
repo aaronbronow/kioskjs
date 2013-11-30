@@ -1,6 +1,6 @@
 var kioskApp = angular.module('kioskApp', [
   'ngRoute',
-  'phonecatControllers'
+  'kioskControllers'
 ]);
 
 kioskApp.config(['$routeProvider',
