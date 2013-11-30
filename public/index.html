@@ -1,17 +1,25 @@
 <!doctype html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="kioskApp">
 <head>
   <meta charset="utf-8">
-  <title>My HTML File</title>
+  <title>Kiosks</title>
   <link rel="stylesheet" href="css/app.css">
   <link rel="stylesheet" href="css/unsemantic-grid-desktop.css">
-  <script src="js/lib/angular.min.js"></script>
+  <script src="js/lib/angular.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/controllers.js" type="text/javascript" charset="utf-8"></script>
+  
 </head>
-<body>
+<body ng-controller="IndexCtrl">
  
   <p>Nothing here {{'yet' + '!'}}</p>
   
   <pre>Angular, i need you to ask the api for all the kiosks and show them as links here. kthxbye</pre>
  
+  <ul>
+    <li ng-repeat="kiosk in kiosks">
+      <a href="#/play/{{kiosk.hashname}}">{{kiosk.name}}</a>
+    </li>
+  </ul>
+  
 </body>
 </html>

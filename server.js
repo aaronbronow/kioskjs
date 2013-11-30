@@ -10,7 +10,7 @@ var app = express();
 //   res.end(body);
 // });
 
-app.get('/kiosks', function(req, res){
+app.get('/api/kiosks', function(req, res){
   var kiosks = [];
   var kiosksPath = path.join(__dirname, 'kiosks');
   var dirs = fs.readdirSync(kiosksPath);
@@ -20,6 +20,7 @@ app.get('/kiosks', function(req, res){
     
     var kiosk = JSON.parse(kioskMeta);
     kiosk.path = "kiosks/" + dirs[i];
+    kiosk.hashname = dirs[i];
     
     kiosks.push(kiosk);
   }
@@ -28,7 +29,7 @@ app.get('/kiosks', function(req, res){
   res.json(kiosks);  
 });
 
-app.get('/kiosks/:name', function(req, res, name){
+app.get('/api/kiosks/:name', function(req, res, name){
   var kiosk = {}
   kiosk.err = "kiosk not found";
   
