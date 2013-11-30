@@ -7,10 +7,7 @@ A kiosk presentation system built with Node and Angular.
 
 - add partial for kiosk details?
 - add screensaver configuration service
-- add partial for screensaver scene (scenes appear on stage and have interactions)
-- add media for scene and details
 - add layout 
-- add swipejs
 - build js app to handle screensaver defaults and scene interactions
 
 ####Cases

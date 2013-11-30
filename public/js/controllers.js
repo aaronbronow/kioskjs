@@ -11,5 +11,7 @@ kioskControllers.controller('PlayCtrl', ['$scope', '$http', '$routeParams',
   function($scope, $http, $routeParams) {
     $http.get('api/kiosks/' + $routeParams.hashname).success(function(data) {
         $scope.kiosk = data;
+        
+        setTimeout(function(){window.kioskSwipe = Swipe($("#slider")[0])}, 10);
       });
   }]);

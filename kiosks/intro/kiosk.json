@@ -1,3 +1,26 @@
 {
-    "name": "Intro to PATH"
+    "name": "Intro to PATH",
+    "scenes": [
+      {
+        "image": "http://www.path.org/about/images/full-about-0813.jpg"
+      },
+      {
+        "image": "http://www.path.org/about/images/full-about-platforms-0813.jpg"
+      },
+      {
+        "image": "http://www.path.org/our-work/images/regions-map-northamerica.jpg"
+      },
+      {
+        "image": "http://www.path.org/our-work/images/regions-map-africa.jpg"
+      },
+      {
+        "image": "http://www.path.org/our-work/images/regions-map-asia-1112.jpg"
+      },
+      {
+        "image": "http://www.path.org/our-work/images/regions-map-easterneurope.jpg"
+      },
+      {
+        "image": "http://www.path.org/our-work/images/regions-map-latinamerica.jpg"
+      }
+    ]
 }

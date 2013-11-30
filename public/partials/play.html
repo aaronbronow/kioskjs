@@ -1,1 +1,9 @@
-play {{kiosk.name}}
+<h2>play {{kiosk.name}}</h2>
+
+<div id='slider' class='swipe'>
+  <div class='swipe-wrap'>
+    <div ng-repeat="scene in kiosk.scenes">
+      <img src="{{scene.image}}"/>
+    </div>
+  </div>
+</div>

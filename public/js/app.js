@@ -1,3 +1,4 @@
+var kioskSwipe;
 var kioskApp = angular.module('kioskApp', [
   'ngRoute',
   'kioskControllers'
@@ -14,3 +15,8 @@ kioskApp.config(['$routeProvider',
         redirectTo: '/'
       });
   }]);
+
+$( document ).ready(function() {
+    console.log( "ready!" );
+    
+});  
