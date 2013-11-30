@@ -6,7 +6,7 @@ var kioskApp = angular.module('kioskApp', [
 kioskApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
-      when('/play/:kiosk', {
+      when('/play/:hashname', {
         templateUrl: 'partials/play.html',
         controller: 'PlayCtrl'
       }).

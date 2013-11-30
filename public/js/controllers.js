@@ -9,7 +9,7 @@ kioskControllers.controller('IndexCtrl', ['$scope', '$http',
 
 kioskControllers.controller('PlayCtrl', ['$scope', '$http', '$routeParams',
   function($scope, $http, $routeParams) {
-    $http.get('api/kiosks/').success(function(data) {
-        $scope.kiosk = data[0];
+    $http.get('api/kiosks/' + $routeParams.hashname).success(function(data) {
+        $scope.kiosk = data;
       });
   }]);

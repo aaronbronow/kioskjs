@@ -16,6 +16,7 @@ app.get('/api/kiosks', function(req, res){
   var dirs = fs.readdirSync(kiosksPath);
 
   for(i = 0; i < dirs.length; i++){
+    // TODO refactor this
     var kioskMeta = fs.readFileSync(path.join(kiosksPath, dirs[i], 'kiosk.json'));
     
     var kiosk = JSON.parse(kioskMeta);
@@ -29,12 +30,21 @@ app.get('/api/kiosks', function(req, res){
   res.json(kiosks);  
 });
 
-app.get('/api/kiosks/:name', function(req, res, name){
-  var kiosk = {}
-  kiosk.err = "kiosk not found";
+app.get('/api/kiosks/:name', function(req, res){
+  var kioskPath = path.join(__dirname, 'kiosks', req.params.name);
+  
+  console.log(kioskPath);
+  
+  // TODO refactor this
+  kioskMeta = fs.readFileSync(path.join(kioskPath, 'kiosk.json'));
+  var kiosk = JSON.parse(kioskMeta);
+  
+  // kiosk.err = "kiosk not found";
+  // 
+  // res.setHeader('Content-Type', 'application/json');
   
   res.setHeader('Content-Type', 'application/json');
-  res.status(404).json(kiosk);
+  res.json(kiosk);
 });
 
 app.use(express.static(__dirname + '/public'));
