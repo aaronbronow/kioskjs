@@ -19,9 +19,7 @@
 <body ng-controller="IndexCtrl">
  
   <h1>*PATH kiosk</h1>
-  
-  <pre>Angular, i need you to ask the api for all the kiosks and show them as links here. kthxbye</pre>
- 
+
   <ul>
     <li ng-repeat="kiosk in kiosks">
       <a href="#/play/{{kiosk.hashname}}">{{kiosk.name}}</a>

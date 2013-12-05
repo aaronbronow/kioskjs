@@ -15,7 +15,7 @@ app.get('/api/kiosks', function(req, res){
   var kiosksPath = path.join(__dirname, 'kiosks');
   var dirs = fs.readdirSync(kiosksPath);
 
-  for(i = 0; i < dirs.length; i++){
+  for(var i = 0; i < dirs.length; i++){
     // TODO refactor this
     var kioskMeta = fs.readFileSync(path.join(kiosksPath, dirs[i], 'kiosk.json'));
     
@@ -36,7 +36,7 @@ app.get('/api/kiosks/:name', function(req, res){
   console.log(kioskPath);
   
   // TODO refactor this
-  kioskMeta = fs.readFileSync(path.join(kioskPath, 'kiosk.json'));
+  var kioskMeta = fs.readFileSync(path.join(kioskPath, 'kiosk.json'));
   var kiosk = JSON.parse(kioskMeta);
   
   // kiosk.err = "kiosk not found";
@@ -48,5 +48,5 @@ app.get('/api/kiosks/:name', function(req, res){
 });
 
 app.use(express.static(__dirname + '/public'));
-app.listen(3000);
-console.log('Listening on port 3000');
+app.listen(process.env.PORT, process.env.IP);
+console.log("Listening on " + process.env.IP + ":" + process.env.PORT);

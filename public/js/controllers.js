@@ -12,6 +12,24 @@ kioskControllers.controller('PlayCtrl', ['$scope', '$http', '$routeParams',
     $http.get('api/kiosks/' + $routeParams.hashname).success(function(data) {
         $scope.kiosk = data;
         
-        setTimeout(function(){window.kioskSwipe = Swipe($("#slider")[0])}, 10);
+        setTimeout(function(){
+            window.kioskSwipe = Swipe($("#slider")[0])
+            
+            // TODO move this to css
+            var leftButton = document.createElement('img');
+            leftButton.src = 'img/1386238146_icon-ios7-arrow-left.png';
+            leftButton.className = 'left-button';
+            
+            var rightButton = document.createElement('img');
+            rightButton.src = 'img/1386238146_icon-ios7-arrow-right.png';
+            rightButton.className = 'right-button';
+            
+            $(".swipe-image img").before(leftButton).after(rightButton);
+            
+            // TODO refactor this into app as live or build a handler to set this
+            $(".swipe-image .left-button").click(window.kioskSwipe.prev);
+            $(".swipe-image .right-button").click(window.kioskSwipe.next);
+            
+            }, 10);
       });
   }]);
