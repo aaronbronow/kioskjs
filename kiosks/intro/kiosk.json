@@ -2,10 +2,15 @@
     "name": "Intro to PATH",
     "scenes": [
       {
-        "image": "http://www.path.org/about/images/full-about-0813.jpg"
+        "image": "http://www.path.org/about/images/full-about-0813.jpg",
+        "link": {
+          "label": "Learn more",
+          "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        }
       },
       {
-        "image": "http://www.path.org/about/images/full-about-platforms-0813.jpg"
+        "image": "http://www.path.org/about/images/full-about-platforms-0813.jpg",
+        "caption": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
       },
       {
         "image": "http://www.path.org/our-work/images/regions-map-northamerica.jpg"

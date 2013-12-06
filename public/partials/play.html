@@ -4,6 +4,14 @@
   <div class='swipe-wrap'>
     <div class="swipe-image" ng-repeat="scene in kiosk.scenes">
       <img src="{{scene.image}}"/>
+      <br/>
+      <p ng-if="scene.caption" class="description">
+        {{scene.caption}}
+      </p>
+      <br/>
+      <a href="#" ng-if="scene.link" class="learn-more">
+        {{scene.link.label}}
+      </a>
     </div>
   </div>
 </div>

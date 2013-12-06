@@ -46,3 +46,9 @@ h1 a {
   line-height: 80px;
   text-decoration: none;
 }
+a.learn-more {
+/*  position: absolute;*/
+  display: inline-block;
+  width: 200px;
+  line-height: 80px;
+}
