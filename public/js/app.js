@@ -1,4 +1,5 @@
 var kioskSwipe;
+var kioskTimer;
 var kioskApp = angular.module('kioskApp', [
   'ngRoute',
   'kioskControllers'

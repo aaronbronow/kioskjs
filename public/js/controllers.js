@@ -2,6 +2,14 @@ var kioskControllers = angular.module('kioskControllers', []);
  
 kioskControllers.controller('IndexCtrl', ['$scope', '$http',
   function ($scope, $http) {
+    $scope.play = function(){
+      $scope.playMode = true;
+    };
+    $scope.stop = function(){
+      $scope.playMode = false;
+      clearInterval(window.kioskTimer);
+    };
+    
     $http.get('api/kiosks/').success(function(data) {
         $scope.kiosks = data;
       });
@@ -31,6 +39,12 @@ kioskControllers.controller('PlayCtrl', ['$scope', '$http', '$routeParams',
             // TODO refactor this into app as live or build a handler to set this
             $(".swipe-image .left-button").click(window.kioskSwipe.prev).css("position: absolute; top: -128px");
             $(".swipe-image .right-button").click(window.kioskSwipe.next);
+            
+            $scope.playMode = true;
+            
+            window.kioskTimer = setInterval(function(){
+              window.kioskSwipe.next();
+            }, 5000);
             
             }, 10);
       });

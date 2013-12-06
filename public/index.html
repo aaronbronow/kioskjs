@@ -18,11 +18,11 @@
 </head>
 <body ng-controller="IndexCtrl">
  
-  <h1>*PATH kiosk</h1>
+  <h1><a ng-href="#" ng-click="stop()">*PATH kiosk</a></h1>
 
-  <ul class="tiles">
+  <ul class="tiles" ng-hide="playMode">
     <li ng-repeat="kiosk in kiosks" class="tile">
-      <a href="#/play/{{kiosk.hashname}}">{{kiosk.name}}</a>
+      <a ng-href="#/play/{{kiosk.hashname}}" ng-click="play()">{{kiosk.name}}</a>
     </li>
   </ul>
   
