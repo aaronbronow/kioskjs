@@ -20,8 +20,8 @@
  
   <h1>*PATH kiosk</h1>
 
-  <ul>
-    <li ng-repeat="kiosk in kiosks">
+  <ul class="tiles">
+    <li ng-repeat="kiosk in kiosks" class="tile">
       <a href="#/play/{{kiosk.hashname}}">{{kiosk.name}}</a>
     </li>
   </ul>

@@ -15,6 +15,8 @@ kioskControllers.controller('PlayCtrl', ['$scope', '$http', '$routeParams',
         setTimeout(function(){
             window.kioskSwipe = Swipe($("#slider")[0])
             
+            var sliderHeight = $("#slider").height();
+            
             // TODO move this to css
             var leftButton = document.createElement('img');
             leftButton.src = 'img/1386238146_icon-ios7-arrow-left.png';
@@ -27,7 +29,7 @@ kioskControllers.controller('PlayCtrl', ['$scope', '$http', '$routeParams',
             $(".swipe-image img").before(leftButton).after(rightButton);
             
             // TODO refactor this into app as live or build a handler to set this
-            $(".swipe-image .left-button").click(window.kioskSwipe.prev);
+            $(".swipe-image .left-button").click(window.kioskSwipe.prev).css("position: absolute; top: -128px");
             $(".swipe-image .right-button").click(window.kioskSwipe.next);
             
             }, 10);

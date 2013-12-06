@@ -1,8 +1,11 @@
 body {
   background: black;
-  color: gray;
+  color: #847d79;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
 }
-
+a {
+  color: #847d79;
+}
 .swipe {
   overflow: hidden;
   visibility: hidden;
@@ -19,4 +22,24 @@ body {
 }
 .swipe-image {
     text-align: center;
+}
+.tile {
+  display: inline-block;
+  position: relative;
+  width: 200px;
+  height: 80px;
+  background: #5d87a1;
+  z-index: 0;
+  margin: 10px 10px;
+  padding: 10px;
+  border-radius: 10px;
+  transition: all .15s ease-in-out;
+  text-align: center;
+}
+.tile a {
+  color: #fff;
+  display: block;
+  width: 200px;
+  line-height: 80px;
+  text-decoration: none;
 }
