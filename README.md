@@ -5,9 +5,10 @@ A kiosk presentation system built with Node and Angular.
 
 ####TODO
 
-- add partial for kiosk details?
-- add screensaver configuration service
-- add layout 
+- left/right buttons as anchors on edges of screen
+- swipe should be vertically centered
+- swipe or touch should pause slideshow for 30 seconds
+- wire up learn more 
 - build js app to handle screensaver defaults and scene interactions
 
 ####Cases
