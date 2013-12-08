@@ -16,6 +16,14 @@ kioskApp.config(['$routeProvider',
         redirectTo: '/'
       });
   }]);
+  
+kioskApp.service('slideShow', function() {
+  return {
+    setup: function() {
+      console.log("Set up slideshow...")
+    }
+  }
+  });
 
 $( document ).ready(function() {
     console.log( "ready!" );
