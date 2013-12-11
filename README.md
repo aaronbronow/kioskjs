@@ -8,8 +8,10 @@ A kiosk presentation system built with Node and Angular.
 - left/right buttons as anchors on edges of screen
 - swipe should be vertically centered
 - swipe or touch should pause slideshow for 30 seconds
-- wire up learn more 
+- wire up learn more
+- replace timer with swipe config 
 - build js app to handle screensaver defaults and scene interactions
+- relative image paths
 
 ####Cases
 

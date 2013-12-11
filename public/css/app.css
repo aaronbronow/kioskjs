@@ -2,6 +2,7 @@ body {
   background: black;
   color: #847d79;
   font-family: Verdana, Arial, Helvetica, sans-serif;
+/*  TODO: lookup how to remove padding/margin in unsemantic */
 }
 a {
   color: #847d79;
@@ -46,9 +47,30 @@ h1 a {
   line-height: 80px;
   text-decoration: none;
 }
+p.caption{
+  margin-left: auto;
+  margin-right: auto;
+}
 a.learn-more {
 /*  position: absolute;*/
   display: inline-block;
   width: 200px;
   line-height: 80px;
+}
+a.arrow {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position-y: center;
+  width: 128px;
+  height: 128px;
+  text-indent: -99999px;
+  position: absolute;
+  z-index: 10;
+  display: none;
+}
+a#left{
+  background-image: url('../img/1386238146_icon-ios7-arrow-left.png');  
+}
+a#right{
+  background-image: url('../img/1386238146_icon-ios7-arrow-right.png');
 }

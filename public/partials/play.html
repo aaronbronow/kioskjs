@@ -1,9 +1,9 @@
 <div id='slider' class='swipe'>
   <div class='swipe-wrap'>
     <div class="swipe-image" ng-repeat="scene in kiosk.scenes">
-      <img src="{{scene.image}}"/>
+      <img src="api/kiosks/intro/{{scene.image}}"/>
       <br/>
-      <p ng-if="scene.caption" class="description">
+      <p ng-if="scene.caption" class="caption">
         {{scene.caption}}
       </p>
       <br/>

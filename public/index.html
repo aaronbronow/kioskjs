@@ -22,15 +22,21 @@
 </head>
 <body ng-controller="IndexCtrl">
  
-  <h1><a ng-href="#" ng-click="stop()">*PATH kiosk</a></h1>
+  <div class="admin">
+    <h1><a ng-href="#" ng-click="stop()">*PATH kiosk</a></h1>
 
-  <ul class="tiles" ng-hide="playMode">
-    <li ng-repeat="kiosk in kiosks" class="tile">
-      <a ng-href="#/play/{{kiosk.hashname}}" ng-click="play()">{{kiosk.name}}</a>
-    </li>
-  </ul>
+    <ul class="tiles" ng-hide="playMode">
+      <li ng-repeat="kiosk in kiosks" class="tile">
+        <a ng-href="#/play/{{kiosk.hashname}}" ng-click="play()">{{kiosk.name}}</a>
+      </li>
+    </ul>
+  </div>
   
-  <div ng-view></div>
+  <div class="stage">
+    <a href="#" id="left" class="arrow">Previous</a>
+    <a href="#" id="right" class="arrow">Next</a>
+    <div ng-view></div>
+  </div>
   
 </body>
 </html>

@@ -47,6 +47,11 @@ app.get('/api/kiosks/:name', function(req, res){
   res.json(kiosk);
 });
 
+app.get('/api/kiosks/:name/:image', function(req, res){
+  res.setHeader('Content-Type', 'application/image');
+  res.send(fs.readFileSync(path.join(__dirname, 'kiosks', req.params.name, req.params.image)));
+});
+
 app.use(express.static(__dirname + '/public'));
 app.listen(3000);
 console.log("Listening on " + 3000);
