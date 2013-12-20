@@ -32,10 +32,18 @@ kioskApp.service('slideShow', function() {
       
       window.kioskSwipe = Swipe($("#slider")[0], {
         auto: 5000,
-        continuous: true
+        continuous: true,
+        callback: function(event) {
+
+          if(event.type && event.type == "touchmove"){
+            window.kioskSwipe.pause();
+            clearTimeout(window.timeout);
+            window.timeout = setTimeout(function(){
+              window.kioskSwipe.play(5000);
+            }, 5000); // slideshow starts playing in 10 seconds
+          }
+        }
       });
-      
-      // TODO on touch event the swipe autoplay stops. figure out how to start it again after x seconds.
       
       // TODO figure out how to do this without setTimeout
       setTimeout(function(){
@@ -46,14 +54,24 @@ kioskApp.service('slideShow', function() {
         leftButton.show().css('height', sliderCssHeight);
         leftButton.click(function(e){
           e.preventDefault();
+          window.kioskSwipe.pause();
           window.kioskSwipe.prev();
+          clearTimeout(window.timeout);
+          window.timeout = setTimeout(function(){
+            window.kioskSwipe.play(5000);
+          }, 5000); // slideshow starts playing in 10 seconds
         });
         
         rightButton.show().css('height', sliderCssHeight)
           .css('right', '0px');
         rightButton.click(function(e){
           e.preventDefault();
+          window.kioskSwipe.pause();
           window.kioskSwipe.next();
+          clearTimeout(window.timeout);
+          window.timeout = setTimeout(function(){
+            window.kioskSwipe.play(5000);
+          }, 5000);
         });
         
         // HACK this width is a magic number

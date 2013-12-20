@@ -269,6 +269,7 @@ function Swipe(container, options) {
 
         // stop slideshow
         stop();
+        options.callback && options.callback(event);
 
         // increase resistance if first or last slide
         delta.x = 
@@ -421,6 +422,17 @@ function Swipe(container, options) {
       // return current index position
       return index;
 
+    },
+    pause: function() {
+      stop();
+      delay = options.auto || 0;
+    },
+    play: function(ms) {
+      if(typeof ms !== 'undefined') {
+        stop();
+        delay = ms;
+      }
+      begin();
     },
     kill: function() {
 
