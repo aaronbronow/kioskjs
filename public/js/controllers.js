@@ -23,7 +23,7 @@ kioskControllers.controller('PlayCtrl', ['$scope', '$http', '$routeParams', 'sli
         // TODO figure out how to use angular to run this without setTimeout
         setTimeout(function(){
           slideShow.setup();
-        }, 10);
+        }, 100);
         
         // setTimeout(function(){
 //             window.kioskSwipe = Swipe($("#slider")[0])

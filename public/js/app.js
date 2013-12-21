@@ -29,12 +29,14 @@ kioskApp.service('slideShow', function() {
       $('div.stage').css('height', viewportHeight + 'px')
         .css('display', 'table-cell')
         .css('vertical-align', 'middle');
+        
+      $('.swipe-image img').css('height', viewportHeight + 'px');
       
       window.kioskSwipe = Swipe($("#slider")[0], {
         auto: 5000,
         continuous: true,
         callback: function(event) {
-
+    
           if(event.type && event.type == "touchmove"){
             window.kioskSwipe.pause();
             clearTimeout(window.timeout);

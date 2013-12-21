@@ -2,7 +2,7 @@ body {
   background: black;
   color: #847d79;
   font-family: Verdana, Arial, Helvetica, sans-serif;
-/*  TODO: lookup how to remove padding/margin in unsemantic */
+  margin: 0px;
 }
 a {
   color: #847d79;
