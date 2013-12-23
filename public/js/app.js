@@ -126,4 +126,15 @@ kioskApp.service('slideShow', function() {
 $( document ).ready(function() {
     console.log( "ready!" );
     
+    // TODO adwb: find the angular way to do this
+    setTimeout(function(){
+            $('li.tile a')[0].addEventListener('click', function(e){
+                console.log("listening");
+                var el = document.documentElement, rfs =
+                       el.requestFullScreen
+                    || el.webkitRequestFullScreen
+                    || el.mozRequestFullScreen;
+                rfs.call(el);
+            });
+        }, 1000);
 });  
