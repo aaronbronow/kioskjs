@@ -2,10 +2,15 @@
     "name": "Intro to PATH",
     "scenes": [
       {
-        "image": "kiosk-1_slideshow_1_facebook.jpg"
+        "image": "kiosk-1_slideshow_1_facebook.jpg",
+        "extra": {
+          "label": "Learn more",
+          "load": "gallery.html"
+        }
       },
       {
-        "image": "kiosk-1_slideshow_1_firefly.jpg"
+        "image": "kiosk-1_slideshow_1_firefly.jpg",
+        "video": "Firefly.mov"
       },
       {
         "image": "kiosk-1_slideshow_1_map.jpg"

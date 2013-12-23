@@ -5,7 +5,7 @@ body {
   margin: 0px;
 }
 a {
-  color: #847d79;
+  color: #fff;
 }
 h1 a {
   text-decoration: none;
@@ -52,15 +52,28 @@ p.caption{
   margin-right: auto;
 }
 a.learn-more {
-/*  position: absolute;*/
+  position: absolute;
   display: inline-block;
   width: 200px;
   line-height: 80px;
+  z-index: 10;
+}
+a.close {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position-y: bottom;
+  width: 64px;
+  height: 64px;
+  text-indent: -99999px;
+  position: absolute;
+  z-index: 10;
+  display: none;
+  background-image: url('../img/close.png');
 }
 a.arrow {
   display: inline-block;
   background-repeat: no-repeat;
-  background-position-y: center;
+  background-position-y: bottom;
   width: 128px;
   height: 128px;
   text-indent: -99999px;
@@ -69,8 +82,44 @@ a.arrow {
   display: none;
 }
 a#left{
-  background-image: url('../img/1386238146_icon-ios7-arrow-left.png');  
+  background-image: url('../img/arrow-left.png');  
 }
 a#right{
-  background-image: url('../img/1386238146_icon-ios7-arrow-right.png');
+  background-image: url('../img/arrow-right.png');
+}
+a.play-video {
+  display: inline-block;
+  background-image: url('../img/play.png');
+  background-repeat: no-repeat;
+  background-position-y: center;
+  width: 64px;
+  height: 64px;
+  text-index: -99999px;
+  position: absolute;
+  z-index: 10;
+}
+div.extra {
+  display: none;
+}
+div.lightbox {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: inherit;
+  background-color: #000;
+}
+div.lightbox .video {
+  text-align: center;
+  padding-top: 80px;
+}
+div.lightbox video {
+  margin-left: auto;
+  margin-right: auto;
+}
+div.gallery {
+  background-color: #000;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
 }

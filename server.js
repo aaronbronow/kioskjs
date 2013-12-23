@@ -48,7 +48,26 @@ app.get('/api/kiosks/:name', function(req, res){
 });
 
 app.get('/api/kiosks/:name/:image', function(req, res){
-  res.setHeader('Content-Type', 'application/image');
+  var extension = path.extname(req.params.image);
+  switch(extension){
+  case '.png':
+    res.setHeader('Content-Type', 'image/png');
+    break;
+  case '.jpg':
+    res.setHeader('Content-Type', 'image/jpeg');
+    break
+  case '.gif':
+    res.setHeader('Content-Type', 'image/gif');
+    break;
+  case '.mov':
+    res.setHeader('Content-Type', 'video/mp4');
+    break;
+  case '.mp4':
+    res.setHeader('Content-Type', 'video/mp4');
+    break;
+  default:
+    res.setHeader('Content-Type', 'text/plain');
+  }
   res.send(fs.readFileSync(path.join(__dirname, 'kiosks', req.params.name, req.params.image)));
 });
 

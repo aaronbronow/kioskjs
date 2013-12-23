@@ -26,11 +26,12 @@ kioskApp.service('slideShow', function() {
       
       // this height does not account for body margin
       var viewportHeight = $(window).height();
+      var viewportWidth = $(window).width();
       $('div.stage').css('height', viewportHeight + 'px')
         .css('display', 'table-cell')
         .css('vertical-align', 'middle');
         
-      $('.swipe-image img').css('height', viewportHeight + 'px');
+      $('.swipe-image img').css('width', viewportWidth + 'px');
       
       window.kioskSwipe = Swipe($("#slider")[0], {
         auto: 5000,
@@ -78,9 +79,46 @@ kioskApp.service('slideShow', function() {
         
         // HACK this width is a magic number
         $('#slider p.caption').css('width', '800px');
-        
+
+        $('a.play-video').css('left', (viewportWidth-64)/2 + 'px')
+          .css('top', (viewportHeight-64)/2 + 'px')
+          .click(function(e) {
+            e.preventDefault();
+            window.kioskSwipe.pause();
+            clearTimeout(window.timeout);
+            $('div.extra').css('height', viewportHeight + 'px').show().addClass('lightbox');
+            $('a.close').css('left', (viewportWidth - 64-64) + 'px').css('top', '20px').show();
+            setTimeout(function(){
+              $('#intro-video-1')[0].play();
+            }, 100);
+            
+          });
+          
+        $('a.learn-more').css('left', (viewportWidth-200)/2 + 'px')
+          .css('top', (viewportHeight-80-80) + 'px')
+          .click(function(e) {
+            e.preventDefault();
+            window.kioskSwipe.pause();
+            clearTimeout(window.timeout);
+            $('div.extra').css('height', viewportHeight + 'px').show().addClass('lightbox');
+            $('div.content').load('api/kiosks/intro/gallery.html', function( response, status, xhr ) {
+              if ( status != "error" ) {
+                $('div.gallery').css('height', (viewportHeight - 100) + 'px');
+              };
+            });
+          });  
       }, 100);
       
+      $('div.lightbox').on('click', function(e) {
+        $('#intro-video-1')[0].stop();
+        
+        $('div.lightbox').removeClass('lightbox');
+      });
+      
+      $('#intro-video-1').on('click', function(e) {
+        $('div.lightbox').removeClass('lightbox');
+        window.kioskSwipe.play(5000);
+      });
     }
   }
   });
