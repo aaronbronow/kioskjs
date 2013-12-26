@@ -65,6 +65,9 @@ app.get('/api/kiosks/:name/:image', function(req, res){
   case '.mp4':
     res.setHeader('Content-Type', 'video/mp4');
     break;
+  case '.webm':
+    res.setHeader('Content-Type', 'video/webm');
+    break;
   default:
     res.setHeader('Content-Type', 'text/plain');
   }

@@ -20,7 +20,7 @@ kioskApp.service('slideShow', function() {
   return {
     setup: function() {
       console.log("Set up slideshow...");
-      
+
       // TODO figure out how to do this with angular
       $('div.admin').hide();
       
@@ -87,7 +87,11 @@ kioskApp.service('slideShow', function() {
             window.kioskSwipe.pause();
             clearTimeout(window.timeout);
             $('div.extra').css('height', viewportHeight + 'px').show().addClass('lightbox');
-            $('a.close').css('left', (viewportWidth - 64-64) + 'px').css('top', '20px').show();
+            $('a.close').css('left', (viewportWidth - 64-64) + 'px').css('top', '20px').show().click(function(e){
+                e.preventDefault();
+                $('a.close').hide();
+                $('div.lightbox').hide();
+            });
             setTimeout(function(){
               $('#intro-video-1')[0].play();
             }, 100);
@@ -125,5 +129,15 @@ kioskApp.service('slideShow', function() {
 
 $( document ).ready(function() {
     console.log( "ready!" );
+    setTimeout(function(){
+        $('li.tile a')[0].addEventListener('click', function(e){
+            console.log("listening");
+            var el = document.documentElement, rfs =
+                   el.requestFullScreen
+                || el.webkitRequestFullScreen
+                || el.mozRequestFullScreen;
+            rfs.call(el);
+        });
+    }, 1000);
     
 });  
