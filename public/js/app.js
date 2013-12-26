@@ -140,4 +140,15 @@ $( document ).ready(function() {
         });
     }, 1000);
     
+    // TODO adwb: find the angular way to do this
+    setTimeout(function(){
+            $('li.tile a')[0].addEventListener('click', function(e){
+                console.log("listening");
+                var el = document.documentElement, rfs =
+                       el.requestFullScreen
+                    || el.webkitRequestFullScreen
+                    || el.mozRequestFullScreen;
+                rfs.call(el);
+            });
+        }, 1000);
 });  
