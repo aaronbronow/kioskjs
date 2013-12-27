@@ -35,6 +35,12 @@ kioskControllers.controller('PlayCtrl', ['$scope', '$timeout', '$http', '$routeP
       
     });
     
+  }]
+);
+  
+kioskControllers.controller('StageCtrl', ['$scope', '$timeout', '$http', '$routeParams', 'slideShow',
+  function($scope, $timeout, $http, $routeParams, slideShow) {
+    
     $scope.$on('stateChanged', function(event, args) {
       console.log(args);
     });
@@ -86,4 +92,13 @@ kioskControllers.controller('PlayCtrl', ['$scope', '$timeout', '$http', '$routeP
       slideShow.continue();
     };
     
-  }]);
+
+  }]
+);
+
+kioskControllers.controller('ExtrasCtrl', ['$scope', '$timeout', '$http', '$routeParams', 'slideShow',
+  function($scope, $timeout, $http, $routeParams, slideShow) {
+    
+    
+  }]
+);

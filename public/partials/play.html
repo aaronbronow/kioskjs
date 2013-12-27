@@ -5,7 +5,7 @@
       <a href="#" ng-if="scene.extra" class="learn-more" ng-click="learn()">
         {{scene.extra.label}}
       </a>
-      <img src="api/kiosks/intro/{{scene.image}}"/>
+      <img ng-src="api/kiosks/intro/{{scene.image}}"/>
       <p ng-if="scene.caption" class="caption">
         {{scene.caption}}
       </p>

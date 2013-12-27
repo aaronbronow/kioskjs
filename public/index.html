@@ -35,14 +35,14 @@
     </ul>
   </div>
 
-  <div class="stage" ng-controller="PlayCtrl">
+  <div class="stage" ng-controller="StageCtrl">
     <a href="#" id="left" class="arrow">Previous</a>
     <a href="#" id="right" class="arrow">Next</a>
     <a href="#" id="close" class="close" ng-click="close()">Close</a>
     <div ng-view></div>
   </div>
   
-  <div class="extra">
+  <div class="extra" ng-controller="ExtrasCtrl">
     <div class="content grid-100">
       <div class="video">
         <video id="intro-video-1" src="api/kiosks/intro/Firefly.mov" width="1280" height="720"></video>
