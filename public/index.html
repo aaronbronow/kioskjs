@@ -22,7 +22,7 @@
 </head>
 <body>
  
-  <div class="admin" ng-controller="AdminCtrl" ng-show="admin">
+  <div class="admin" ng-controller="AdminCtrl" ng-show="$location.path()=='/'">
     <h1>*PATH kiosk</h1>
 
     <input type="checkbox" ng-model="fullscreen" id="fullscreen">

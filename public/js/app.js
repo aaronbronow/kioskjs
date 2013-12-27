@@ -34,7 +34,6 @@ kioskApp.service('slideShow', function($rootScope, $timeout) {
     },
     setup: function() {
       $rootScope.$broadcast('stateChanged', 'setup');
-      $rootScope.admin = false;
       
       // this height does not account for body margin
       $('div.stage').css('height', $rootScope.config.viewportHeight + 'px');
@@ -111,7 +110,6 @@ kioskApp.service('slideShow', function($rootScope, $timeout) {
 });
 
 kioskApp.run(function($rootScope) {
-  $rootScope.admin = true;
   $rootScope.state = 'init';
   $rootScope.config = {
     viewportHeight: $(window).height(),

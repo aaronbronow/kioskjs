@@ -1,8 +1,9 @@
 var kioskControllers = angular.module('kioskControllers', []);
 
-kioskControllers.controller('AdminCtrl', ['$scope', '$timeout', '$http', '$routeParams', 'slideShow',
-  function($scope, $timeout, $http, $routeParams, slideShow) {
+kioskControllers.controller('AdminCtrl', ['$scope', '$timeout', '$http', '$location', '$routeParams', 'slideShow',
+  function($scope, $timeout, $http, $location, $routeParams, slideShow) {
     $http.get('api/kiosks/').success(function(data) {
+      $scope.$location = $location;
       $scope.kiosks = data;
       console.log(data);
       
