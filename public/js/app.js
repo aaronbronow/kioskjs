@@ -40,6 +40,7 @@ kioskApp.service('slideShow', function($rootScope, $timeout) {
       $('div.stage').css('height', $rootScope.config.viewportHeight + 'px');
       $('div.extra').css('height', $rootScope.config.viewportHeight + 'px');
       $('a.close').css('left', ($rootScope.config.viewportWidth - 64-64) + 'px').css('top', '20px');
+      $('div.gallery').css('height', ($rootScope.config.viewportHeight - 100) + 'px');
       
       // this width does not account for scrollbar
       $('.swipe-image img').css('width', $rootScope.config.viewportWidth + 'px');
@@ -99,7 +100,7 @@ kioskApp.service('slideShow', function($rootScope, $timeout) {
         
       });
       
-      $('#intro-video-1').on('click', function(e) {
+      $('.extra .video, .extra video').on('click', function(e) {
         $rootScope.$broadcast('touch', 'video');
       });
       

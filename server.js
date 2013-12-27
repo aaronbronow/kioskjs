@@ -40,6 +40,18 @@ app.get('/api/kiosks/:name', function(req, res){
   // TODO refactor this
   var kioskMeta = fs.readFileSync(path.join(kioskPath, 'kiosk.json'));
   var kiosk = JSON.parse(kioskMeta);
+  kiosk.path = "kiosks/" + req.params.name;
+  kiosk.hashname = req.params.name;
+  
+  for(var i = 0; i < kiosk.scenes.length; i++) {
+    if(kiosk.scenes[i].video && typeof(kiosk.scenes[i].video) != 'undefined') {
+      kiosk.scenes[i].video_url = "api/kiosks/" + req.params.name + "/" + kiosk.scenes[i].video;
+    }
+    
+    if(kiosk.scenes[i].gallery && typeof(kiosk.scenes[i].gallery) != 'undefined') {
+      kiosk.scenes[i].gallery.load_url = "api/kiosks/" + req.params.name + "/" + kiosk.scenes[i].gallery.load;
+    }
+  }
   
   // kiosk.err = "kiosk not found";
   // 

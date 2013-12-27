@@ -1,14 +1,26 @@
 <div id='slider' class='swipe'>
   <div class='swipe-wrap'>
     <div class="swipe-image" ng-repeat="scene in kiosk.scenes">
-      <a href="#" ng-if="scene.video" class="play-video" ng-click="play()"></a>
-      <a href="#" ng-if="scene.extra" class="learn-more" ng-click="learn()">
-        {{scene.extra.label}}
+      <a href="#" ng-if="scene.video" class="play-video" ng-click="play($index)"></a>
+      <a href="#" ng-if="scene.gallery" class="learn-more" ng-click="learn($index)">
+        {{scene.gallery.label}}
       </a>
       <img ng-src="api/kiosks/intro/{{scene.image}}"/>
       <p ng-if="scene.caption" class="caption">
         {{scene.caption}}
       </p>
+    </div>
+  </div>
+</div>
+
+<div id="backstage">
+  <div class="extra" ng-repeat="scene in kiosk.scenes" id="extra-{{$index}}">
+    <div class="content grid-100" id="content-{{$index}}">
+      <div class="video" ng-if="scene.video">
+        <video id="video-{{$index}}" ng-src="{{scene.video_url}}" width="1280" height="720"></video>
+      </div>
+      <div class="gallery" ng-if="scene.gallery">
+      </div>
     </div>
   </div>
 </div>

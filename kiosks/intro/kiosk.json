@@ -3,7 +3,7 @@
     "scenes": [
       {
         "image": "kiosk-1_slideshow_1_facebook.jpg",
-        "extra": {
+        "gallery": {
           "label": "Learn more",
           "load": "gallery.html"
         }

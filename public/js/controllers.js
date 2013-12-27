@@ -31,6 +31,17 @@ kioskControllers.controller('PlayCtrl', ['$scope', '$timeout', '$http', '$routeP
       
       $timeout(function(){
         slideShow.setup();
+        
+        for(var i = 0; i < $scope.kiosk.scenes.length; i++) {
+          if($scope.kiosk.scenes[i].gallery && typeof($scope.kiosk.scenes[i].gallery) != 'undefined') {
+            $('#extra-' + i + ' .gallery').load('api/kiosks/intro/gallery.html', function( response, status, xhr ) {
+              if ( status != "error" ) {
+                
+              };
+            });  
+        
+          }
+        }
       }, 0);
       
     });
@@ -58,37 +69,36 @@ kioskControllers.controller('StageCtrl', ['$scope', '$timeout', '$http', '$route
       }
     });
       
-    $scope.play = function(){
+    $scope.play = function(slide){
+      $scope.currentSlide = slide;
       console.log('play video');
-      $('div.extra').show().addClass('lightbox');
+      $('#extra-' + slide).show().addClass('lightbox');
       $('a.close').show();
       $('a.arrow').hide();
       slideShow.pause();
       
       setTimeout(function(){
-        $('#intro-video-1')[0].play();
+        $('#video-' + slide)[0].play();
       }, 100);
     };
     
-    $scope.learn = function(){
+    $scope.learn = function(slide){
+      $scope.currentSlide = slide;
       console.log('learn more');
-      $('div.extra').show().addClass('lightbox');
+      $('#extra-' + slide).show().addClass('lightbox');
       $('a.close').show();
       $('a.arrow').hide();
       slideShow.pause();
-      
-      $('div.content').load('api/kiosks/intro/gallery.html', function( response, status, xhr ) {
-        if ( status != "error" ) {
-          $('div.gallery').css('height', ($rootScope.config.viewportHeight - 100) + 'px');
-        };
-      });
     };
     
     $scope.close = function(){
       $('a.close').hide();
       $('a.arrow').show();
       $('div.lightbox').hide();
-      $('#intro-video-1')[0].pause();
+      var video = $('#video-' + $scope.currentSlide)[0];
+      if(video && typeof(video) != 'undefined'){
+        video.pause();
+      }
       slideShow.continue();
     };
     
@@ -96,9 +106,3 @@ kioskControllers.controller('StageCtrl', ['$scope', '$timeout', '$http', '$route
   }]
 );
 
-kioskControllers.controller('ExtrasCtrl', ['$scope', '$timeout', '$http', '$routeParams', 'slideShow',
-  function($scope, $timeout, $http, $routeParams, slideShow) {
-    
-    
-  }]
-);
