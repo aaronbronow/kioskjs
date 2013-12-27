@@ -5,7 +5,7 @@
       <a href="#" ng-if="scene.gallery" class="learn-more" ng-click="learn($index)">
         {{scene.gallery.label}}
       </a>
-      <img ng-src="api/kiosks/intro/{{scene.image}}"/>
+      <img ng-src="api/kiosks/{{kiosk.hashname}}/{{scene.image}}"/>
       <p ng-if="scene.caption" class="caption">
         {{scene.caption}}
       </p>

@@ -2,30 +2,27 @@
     "name": "Vaccines",
     "scenes": [
       {
-        "image": "http://www.path.org/about/images/full-about-0813.jpg",
-        "link": {
-          "label": "Learn more",
-          "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-        }
+        "image": "kiosk-2_slideshow_1_new_vaccine.jpg",
+        "video": "new-vaccine-for-africa.mov"
       },
       {
-        "image": "http://www.path.org/about/images/full-about-platforms-0813.jpg",
-        "caption": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        "image": "kiosk-2_slideshow_1_donate.jpg"
       },
       {
-        "image": "http://www.path.org/our-work/images/regions-map-northamerica.jpg"
+        "image": "kiosk-2_slideshow_1_kids.jpg",
+        "video": "i-am.mp4"
       },
       {
-        "image": "http://www.path.org/our-work/images/regions-map-africa.jpg"
+        "image": "kiosk-1_slideshow_1_twitter.jpg"
       },
       {
-        "image": "http://www.path.org/our-work/images/regions-map-asia-1112.jpg"
+        "image": "kiosk-1_slideshow_1_pathorg.jpg"
       },
       {
-        "image": "http://www.path.org/our-work/images/regions-map-easterneurope.jpg"
+        "image": "kiosk-1_slideshow_1_facebook.jpg"
       },
       {
-        "image": "http://www.path.org/our-work/images/regions-map-latinamerica.jpg"
+        "image": "kiosk-1_slideshow_1_stevedavis_02.jpg"
       }
     ]
 }
