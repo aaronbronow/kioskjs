@@ -1,8 +1,8 @@
 <div id='slider' class='swipe'>
   <div class='swipe-wrap'>
     <div class="swipe-image" ng-repeat="scene in kiosk.scenes">
-      <a href="#" ng-if="scene.video" class="play-video"></a>
-      <a href="#" ng-if="scene.extra" class="learn-more">
+      <a href="#" ng-if="scene.video" class="play-video" ng-click="play()"></a>
+      <a href="#" ng-if="scene.extra" class="learn-more" ng-click="learn()">
         {{scene.extra.label}}
       </a>
       <img src="api/kiosks/intro/{{scene.image}}"/>

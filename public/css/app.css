@@ -47,6 +47,10 @@ h1 a {
   line-height: 80px;
   text-decoration: none;
 }
+.stage {
+  display: table-cell;
+  vertical-align: middle;
+}
 p.caption{
   margin-left: auto;
   margin-right: auto;

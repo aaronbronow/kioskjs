@@ -20,29 +20,32 @@
   <script src="js/controllers.js" type="text/javascript" charset="utf-8"></script>
   
 </head>
-<body ng-controller="IndexCtrl">
+<body>
  
-  <div class="admin">
-    <h1><a ng-href="#" ng-click="stop()">*PATH kiosk</a></h1>
+  <div class="admin" ng-controller="AdminCtrl" ng-show="admin">
+    <h1>*PATH kiosk</h1>
 
-    <ul class="tiles" ng-hide="playMode">
+    <input type="checkbox" ng-model="fullscreen" id="fullscreen">
+    <label for="fullscreen">Play in fullscreen mode.</label>
+
+    <ul class="tiles">
       <li ng-repeat="kiosk in kiosks" class="tile">
-        <a ng-href="#/play/{{kiosk.hashname}}" ng-click="play()">{{kiosk.name}}</a>
+        <a ng-href="#/play/{{kiosk.hashname}}">{{kiosk.name}}</a>
       </li>
     </ul>
   </div>
 
-  <div class="stage">
+  <div class="stage" ng-controller="PlayCtrl">
     <a href="#" id="left" class="arrow">Previous</a>
     <a href="#" id="right" class="arrow">Next</a>
-    <a href="#" id="close" class="close">Close</a>
+    <a href="#" id="close" class="close" ng-click="close()">Close</a>
     <div ng-view></div>
   </div>
   
   <div class="extra">
     <div class="content grid-100">
       <div class="video">
-        <video id="intro-video-1" src="api/kiosks/intro/Firefly.webm" width="1280" height="720"></video>
+        <video id="intro-video-1" src="api/kiosks/intro/Firefly.mov" width="1280" height="720"></video>
       </div>
     </div>
   </div>

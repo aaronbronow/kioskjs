@@ -15,41 +15,46 @@ kioskApp.config(['$routeProvider',
         redirectTo: '/'
       });
   }]);
-  
-kioskApp.service('slideShow', function() {
-  return {
-    setup: function() {
-      console.log("Set up slideshow...");
 
-      // TODO figure out how to do this with angular
-      $('div.admin').hide();
+kioskApp.service('slideShow', function($rootScope, $timeout) {
+  var slideShowService = {
+    pause: function(auto) {
+      $rootScope.$broadcast('stateChanged', 'paused');
+      window.kioskSwipe.pause();
+      clearTimeout(window.timeout);
+      if(auto){
+        window.timeout = setTimeout(function(){
+          slideShowService.continue();
+        }, $rootScope.config.touchTimeout);
+      }
+    },
+    continue: function() {
+      window.kioskSwipe.play($rootScope.config.auto);
+      $rootScope.$broadcast('stateChanged', 'playing');
+    },
+    setup: function() {
+      $rootScope.$broadcast('stateChanged', 'setup');
+      $rootScope.admin = false;
       
       // this height does not account for body margin
-      var viewportHeight = $(window).height();
-      var viewportWidth = $(window).width();
-      $('div.stage').css('height', viewportHeight + 'px')
-        .css('display', 'table-cell')
-        .css('vertical-align', 'middle');
-        
-      $('.swipe-image img').css('width', viewportWidth + 'px');
+      $('div.stage').css('height', $rootScope.config.viewportHeight + 'px');
+      $('div.extra').css('height', $rootScope.config.viewportHeight + 'px');
+      $('a.close').css('left', ($rootScope.config.viewportWidth - 64-64) + 'px').css('top', '20px');
+      
+      // this width does not account for scrollbar
+      $('.swipe-image img').css('width', $rootScope.config.viewportWidth + 'px');
       
       window.kioskSwipe = Swipe($("#slider")[0], {
-        auto: 5000,
-        continuous: true,
+        auto: $rootScope.config.auto,
+        continuous: $rootScope.config.continuous,
         callback: function(event) {
-    
           if(event.type && event.type == "touchmove"){
-            window.kioskSwipe.pause();
-            clearTimeout(window.timeout);
-            window.timeout = setTimeout(function(){
-              window.kioskSwipe.play(5000);
-            }, 5000); // slideshow starts playing in 10 seconds
+            slideShowService.pause(true);
           }
         }
       });
       
-      // TODO figure out how to do this without setTimeout
-      setTimeout(function(){
+      $timeout(function(){
         var sliderCssHeight = $('#slider').css('height');
         var leftButton = $('a#left');
         var rightButton = $('a#right');
@@ -57,98 +62,65 @@ kioskApp.service('slideShow', function() {
         leftButton.show().css('height', sliderCssHeight);
         leftButton.click(function(e){
           e.preventDefault();
-          window.kioskSwipe.pause();
+          slideShowService.pause(true);
           window.kioskSwipe.prev();
-          clearTimeout(window.timeout);
-          window.timeout = setTimeout(function(){
-            window.kioskSwipe.play(5000);
-          }, 5000); // slideshow starts playing in 10 seconds
         });
         
         rightButton.show().css('height', sliderCssHeight)
           .css('right', '0px');
         rightButton.click(function(e){
           e.preventDefault();
-          window.kioskSwipe.pause();
+          slideShowService.pause(true);
           window.kioskSwipe.next();
-          clearTimeout(window.timeout);
-          window.timeout = setTimeout(function(){
-            window.kioskSwipe.play(5000);
-          }, 5000);
         });
         
         // HACK this width is a magic number
         $('#slider p.caption').css('width', '800px');
 
-        $('a.play-video').css('left', (viewportWidth-64)/2 + 'px')
-          .css('top', (viewportHeight-64)/2 + 'px')
+        $('a.close').click(function(e) {
+          e.preventDefault();
+        });
+        
+        $('a.play-video').css('left', ($rootScope.config.viewportWidth-64)/2 + 'px')
+          .css('top', ($rootScope.config.viewportHeight-64)/2 + 'px')
           .click(function(e) {
             e.preventDefault();
-            window.kioskSwipe.pause();
-            clearTimeout(window.timeout);
-            $('div.extra').css('height', viewportHeight + 'px').show().addClass('lightbox');
-            $('a.close').css('left', (viewportWidth - 64-64) + 'px').css('top', '20px').show().click(function(e){
-                e.preventDefault();
-                $('a.close').hide();
-                $('div.lightbox').hide();
-            });
-            setTimeout(function(){
-              $('#intro-video-1')[0].play();
-            }, 100);
-            
           });
-          
-        $('a.learn-more').css('left', (viewportWidth-200)/2 + 'px')
-          .css('top', (viewportHeight-80-80) + 'px')
+        
+        $('a.learn-more').css('left', ($rootScope.config.viewportWidth-200)/2 + 'px')
+          .css('top', ($rootScope.config.viewportHeight-80-80) + 'px')
           .click(function(e) {
             e.preventDefault();
-            window.kioskSwipe.pause();
-            clearTimeout(window.timeout);
-            $('div.extra').css('height', viewportHeight + 'px').show().addClass('lightbox');
-            $('div.content').load('api/kiosks/intro/gallery.html', function( response, status, xhr ) {
-              if ( status != "error" ) {
-                $('div.gallery').css('height', (viewportHeight - 100) + 'px');
-              };
-            });
           });  
       }, 100);
       
       $('div.lightbox').on('click', function(e) {
-        $('#intro-video-1')[0].stop();
+        $rootScope.$broadcast('touch', 'lightbox');
         
-        $('div.lightbox').removeClass('lightbox');
       });
       
       $('#intro-video-1').on('click', function(e) {
-        $('div.lightbox').removeClass('lightbox');
-        window.kioskSwipe.play(5000);
+        $rootScope.$broadcast('touch', 'video');
       });
+      
+      $rootScope.$broadcast('stateChanged', 'playing');
     }
-  }
-  });
+  };
+  return slideShowService;
+});
 
+kioskApp.run(function($rootScope) {
+  $rootScope.admin = true;
+  $rootScope.state = 'init';
+  $rootScope.config = {
+    viewportHeight: $(window).height(),
+    viewportWidth: $(window).width(),
+    auto: 5000,
+    continuous: true,
+    touchTimeout: 5000
+  };
+});
+  
 $( document ).ready(function() {
     console.log( "ready!" );
-    setTimeout(function(){
-        $('li.tile a')[0].addEventListener('click', function(e){
-            console.log("listening");
-            var el = document.documentElement, rfs =
-                   el.requestFullScreen
-                || el.webkitRequestFullScreen
-                || el.mozRequestFullScreen;
-            rfs.call(el);
-        });
-    }, 1000);
-    
-    // TODO adwb: find the angular way to do this
-    setTimeout(function(){
-            $('li.tile a')[0].addEventListener('click', function(e){
-                console.log("listening");
-                var el = document.documentElement, rfs =
-                       el.requestFullScreen
-                    || el.webkitRequestFullScreen
-                    || el.mozRequestFullScreen;
-                rfs.call(el);
-            });
-        }, 1000);
 });  

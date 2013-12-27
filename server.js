@@ -23,6 +23,8 @@ app.get('/api/kiosks', function(req, res){
     kiosk.path = "kiosks/" + dirs[i];
     kiosk.hashname = dirs[i];
     
+    console.log(kiosk.path);
+    
     kiosks.push(kiosk);
   }
 
