@@ -69,7 +69,7 @@ app.get('/api/kiosks/:name/:image', function(req, res){
     break;
   case '.jpg':
     res.setHeader('Content-Type', 'image/jpeg');
-    break
+    break;
   case '.gif':
     res.setHeader('Content-Type', 'image/gif');
     break;
@@ -81,6 +81,9 @@ app.get('/api/kiosks/:name/:image', function(req, res){
     break;
   case '.webm':
     res.setHeader('Content-Type', 'video/webm');
+    break;
+  case '.html':
+    res.setHeader('Content-Type', 'text/html');
     break;
   default:
     res.setHeader('Content-Type', 'text/plain');

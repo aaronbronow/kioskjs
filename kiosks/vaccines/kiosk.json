@@ -6,6 +6,13 @@
         "video": "new-vaccine-for-africa.mov"
       },
       {
+        "image": "kiosk-2_slideshow_1_kids.jpg",
+        "gallery": {
+          "label": "Learn more",
+          "load": "gallery.html"
+        }
+      },
+      {
         "image": "kiosk-2_slideshow_1_donate.jpg"
       },
       {

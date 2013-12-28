@@ -39,7 +39,7 @@ kioskApp.service('slideShow', function($rootScope, $timeout) {
       $('div.stage').css('height', $rootScope.config.viewportHeight + 'px');
       $('div.extra').css('height', $rootScope.config.viewportHeight + 'px');
       $('a.close').css('left', ($rootScope.config.viewportWidth - 64-64) + 'px').css('top', '20px');
-      $('div.gallery').css('height', ($rootScope.config.viewportHeight - 100) + 'px');
+      $('div.gallery').css('height', ($rootScope.config.viewportHeight) + 'px');
       
       // this width does not account for scrollbar
       $('.swipe-image img').css('width', $rootScope.config.viewportWidth + 'px');
@@ -90,6 +90,14 @@ kioskApp.service('slideShow', function($rootScope, $timeout) {
         $('a.learn-more').css('left', ($rootScope.config.viewportWidth-200)/2 + 'px')
           .css('top', ($rootScope.config.viewportHeight-80-80) + 'px')
           .click(function(e) {
+            $('div.gallery div.view').css('height', ($rootScope.config.viewportHeight) + 'px');
+            $('div.gallery div.thumbnails').css('height', ($rootScope.config.viewportHeight-72) + 'px');
+            
+            $('div.gallery div.thumbnails img').click(function(e) {
+              console.log($(this).data('big'));
+              $('div.gallery div.view img').attr('src', $(this).data('big'));
+            });
+            
             e.preventDefault();
           });  
       }, 100);

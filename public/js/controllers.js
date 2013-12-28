@@ -35,7 +35,7 @@ kioskControllers.controller('PlayCtrl', ['$scope', '$timeout', '$http', '$routeP
         
         for(var i = 0; i < $scope.kiosk.scenes.length; i++) {
           if($scope.kiosk.scenes[i].gallery && typeof($scope.kiosk.scenes[i].gallery) != 'undefined') {
-            $('#extra-' + i + ' .gallery').load('api/kiosks/intro/gallery.html', function( response, status, xhr ) {
+            $('#extra-' + i + ' .gallery').load('api/kiosks/' + $scope.kiosk.hashname + '/gallery.html', function( response, status, xhr ) {
               if ( status != "error" ) {
                 
               };
