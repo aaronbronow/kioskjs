@@ -59,14 +59,14 @@ kioskApp.service('slideShow', function($rootScope, $timeout) {
         var leftButton = $('a#left');
         var rightButton = $('a#right');
         
-        leftButton.show().css('height', sliderCssHeight);
+        leftButton.show().css('height', $rootScope.config.viewportHeight + 'px');
         leftButton.click(function(e){
           e.preventDefault();
           slideShowService.pause(true);
           window.kioskSwipe.prev();
         });
         
-        rightButton.show().css('height', sliderCssHeight)
+        rightButton.show().css('height', $rootScope.config.viewportHeight + 'px')
           .css('right', '0px');
         rightButton.click(function(e){
           e.preventDefault();
