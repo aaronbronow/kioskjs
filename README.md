@@ -3,6 +3,21 @@ kioskjs
 
 A kiosk presentation system built with Node and Angular.
 
+####Issues
+
+- ~~video lightbox not fit to screen height~~
+- video ends, never restarts
+- ~~gallery lightbox not fit to screen height~~
+- gallery thumbnails not centered
+- gallery thumbnails provide no indication that anything happened after click
+- dragging lightbox "wiggles" the screen
+- dragging arrows scrolls
+- set timeout on gallery view
+- style gallery based on C's sketch
+- ~~lightbox sometimes doesn't show up behind video~~
+- round corner of video
+- ~~add transparency to lightbox on video~~
+
 ####TODO
 
 - left/right buttons as anchors on edges of screen
