@@ -3,6 +3,7 @@ body {
   color: #847d79;
   font-family: Verdana, Arial, Helvetica, sans-serif;
   margin: 0px;
+  overflow: hidden;
 }
 a {
   color: #fff;
@@ -120,11 +121,11 @@ div.lightbox {
   top: 0px;
   width: 100%;
   height: inherit;
-  background-color: #000;
+  background-color: rgba(0,0,0,0.8);
 }
 div.lightbox .video {
   text-align: center;
-  padding-top: 80px;
+  padding-top: 175px;
 }
 div.lightbox video {
   margin-left: auto;
