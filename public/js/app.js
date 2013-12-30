@@ -38,7 +38,7 @@ kioskApp.service('slideShow', function($rootScope, $timeout) {
       // this height does not account for body margin
       $('div.stage').css('height', $rootScope.config.viewportHeight + 'px');
       $('div.extra').css('height', $rootScope.config.viewportHeight + 'px');
-      $('a.close').css('left', ($rootScope.config.viewportWidth - 64-64) + 'px').css('top', '20px');
+      $('a.close').css('left', ($rootScope.config.viewportWidth - 350) + 'px').css('top', '139px');
       $('div.gallery').css('height', ($rootScope.config.viewportHeight) + 'px');
       
       // this width does not account for scrollbar
@@ -47,6 +47,7 @@ kioskApp.service('slideShow', function($rootScope, $timeout) {
       window.kioskSwipe = Swipe($("#slider")[0], {
         auto: $rootScope.config.auto,
         continuous: $rootScope.config.continuous,
+        disableScroll: true,
         callback: function(event) {
           if(event.type && event.type == "touchmove"){
             slideShowService.pause(true);
@@ -85,16 +86,19 @@ kioskApp.service('slideShow', function($rootScope, $timeout) {
           .css('top', ($rootScope.config.viewportHeight-64)/2 + 'px')
           .click(function(e) {
             e.preventDefault();
+            sliderCssHeight = $('#slider').css('height');
+            $('div.lightbox').css('height', sliderCssHeight);
+            $('a.close').css('left', ($rootScope.config.viewportWidth - 350) + 'px').css('top', '139px');
           });
         
         $('a.learn-more').css('left', ($rootScope.config.viewportWidth-200)/2 + 'px')
           .css('top', ($rootScope.config.viewportHeight-80-80) + 'px')
           .click(function(e) {
+            sliderCssHeight = $('#slider').css('height');
             $('div.gallery div.view').css('height', ($rootScope.config.viewportHeight) + 'px');
-            $('div.gallery div.thumbnails').css('height', ($rootScope.config.viewportHeight-72) + 'px');
+            $('div.gallery div.thumbnails').css('height', ($rootScope.config.viewportHeight + 72) + 'px');
             
             $('div.gallery div.thumbnails img').click(function(e) {
-              console.log($(this).data('big'));
               $('div.gallery div.view img').attr('src', $(this).data('big'));
             });
             

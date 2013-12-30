@@ -3,7 +3,7 @@
     "scenes": [
       {
         "image": "kiosk-2_slideshow_1_new_vaccine.jpg",
-        "video": "new-vaccine-for-africa.mov"
+        "video": "new-vaccine-for-africa.webm"
       },
       {
         "image": "kiosk-2_slideshow_1_kids.jpg",
@@ -17,7 +17,7 @@
       },
       {
         "image": "kiosk-2_slideshow_1_kids.jpg",
-        "video": "i-am.mp4"
+        "video": "i-am.webm"
       },
       {
         "image": "kiosk-1_slideshow_1_twitter.jpg"
