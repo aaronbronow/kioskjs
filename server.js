@@ -87,6 +87,8 @@ app.get('/api/kiosks/:name/:image', function(req, res){
     break;
   case '.webm':
     res.setHeader('Content-Type', 'video/webm');
+    streamResponse(req, res, path.join(__dirname, 'kiosks', req.params.name, req.params.image), 'video/webm');
+    return;
     break;
   case '.html':
     res.setHeader('Content-Type', 'text/html');
@@ -96,6 +98,37 @@ app.get('/api/kiosks/:name/:image', function(req, res){
   }
   res.send(fs.readFileSync(path.join(__dirname, 'kiosks', req.params.name, req.params.image)));
 });
+
+function streamResponse(req, res, filePath, contentType) {
+  var range = req.headers.range;
+  var stat = fs.statSync(filePath);
+  
+  range = range.replace(/bytes=/, '').split('-');
+  var start = parseInt(range[0], 10);
+  var end = parseInt(range[1], 10);
+  var total = stat.size;
+  
+  if(isNaN(end)) {
+    end = total - 1;
+  }
+  
+  var chunk = (end - start) + 1;
+  console.log(start + '-' + end + '/' + total + ' ' + chunk);
+  
+  res.writeHead(206, {
+    'Connection': 'close',
+    'Content-Type': contentType,
+    'Content-Length': chunk,
+    'Content-Range': 'bytes ' + start + '-' + end + '/' + total,
+    'Transfer-Encoding': 'chunked',
+    'Accept-Ranges': 'bytes'
+  });
+  
+  var stream = fs.createReadStream(filePath,
+      { flags: 'r', start: start, end: end});
+      
+  stream.pipe(res);
+}
 
 app.listen(3000);
 console.log("Listening on " + 3000);

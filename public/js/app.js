@@ -33,22 +33,38 @@ kioskApp.service('slideShow', function($rootScope, $timeout) {
       $rootScope.$broadcast('stateChanged', 'playing');
     },
     setup: function() {
+      var leftButton = $('a#left');
+      var rightButton = $('a#right');
+      var closeButton = $('a#close');
+      
       $rootScope.$broadcast('stateChanged', 'setup');
       
       // this height does not account for body margin
       $('div.stage').css('height', $rootScope.config.viewportHeight + 'px');
       $('div.extra').css('height', $rootScope.config.viewportHeight + 'px');
-      $('a.close').css('left', ($rootScope.config.viewportWidth - 350) + 'px').css('top', '139px');
+      closeButton.css('left', ($rootScope.config.viewportWidth - 350) + 'px').css('top', '139px');
       $('div.gallery').css('height', ($rootScope.config.viewportHeight) + 'px');
       
       // this width does not account for scrollbar
       $('.swipe-image img').css('width', $rootScope.config.viewportWidth + 'px');
       
+      // if the swipe object is already setup kill it before setting up again
+      if(typeof(window.kioskSwipe) == 'object') {
+        window.kioskSwipe.kill();
+        leftButton.unbind('click').unbind('dragstart');
+        rightButton.unbind('click').unbind('dragstart');
+        closeButton.unbind('click').unbind('dragstart');
+        // $('a.play-video').unbind('click');
+        // $('a.learn-more').unbind('click');
+        // $('a.lightbox').unbind('click');
+        // $('.extra .video, .extra video').unbind('click');
+      }
+      
       window.kioskSwipe = Swipe($("#slider")[0], {
         auto: $rootScope.config.auto,
         continuous: $rootScope.config.continuous,
         disableScroll: true,
-        speed: 1000,
+        speed: $rootScope.config.speed,
         callback: function(event) {
           if(event.type && event.type == "touchmove"){
             slideShowService.pause(true);
@@ -58,8 +74,6 @@ kioskApp.service('slideShow', function($rootScope, $timeout) {
       
       $timeout(function(){
         var sliderCssHeight = $('#slider').css('height');
-        var leftButton = $('a#left');
-        var rightButton = $('a#right');
         
         leftButton.show().css('top', ($rootScope.config.viewportHeight - 128) + 'px');
         leftButton.click(function(e){
@@ -82,14 +96,18 @@ kioskApp.service('slideShow', function($rootScope, $timeout) {
         rightButton.on('dragstart', function(e){
           e.preventDefault();
           window.kioskSwipe.next();
-        })
+        });
         
         // HACK this width is a magic number
         $('#slider p.caption').css('width', '800px');
 
-        $('a.close').click(function(e) {
+        closeButton.click(function(e) {
           e.preventDefault();
         });
+        closeButton.on('dragstart', function(e){
+          e.preventDefault();
+          $rootScope.$broadcast('touch', 'lightbox');
+        })
         
         $('a.play-video').css('left', '524px')
           .css('top', ($rootScope.config.viewportHeight-96)/2 + 'px')
@@ -141,6 +159,7 @@ kioskApp.run(function($rootScope) {
     viewportHeight: $(window).height(),
     viewportWidth: $(window).width(),
     auto: 8000,
+    speed: 1000,
     continuous: true,
     touchTimeout: 5000
   };
