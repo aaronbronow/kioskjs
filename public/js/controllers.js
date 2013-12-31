@@ -96,6 +96,7 @@ kioskControllers.controller('StageCtrl', ['$scope', '$timeout', '$http', '$route
       $('a.close').hide();
       $('a.arrow').show();
       $('div.lightbox').hide();
+      $('div.gallery div.caption').hide();
       var video = $('#video-' + $scope.currentSlide)[0];
       if(video && typeof(video) != 'undefined'){
         video.pause();

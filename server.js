@@ -10,10 +10,16 @@ var app = express();
 //   res.end(body);
 // });
 
+app.use(express.static(__dirname + '/public'));
+
+app.use(express.logger());
+
 app.get('/api/kiosks', function(req, res){
   var kiosks = [];
   var kiosksPath = path.join(__dirname, 'kiosks');
   var dirs = fs.readdirSync(kiosksPath);
+
+  console.log("Looking for kiosks in " + kiosksPath);
 
   for(var i = 0; i < dirs.length; i++){
     // TODO refactor this
@@ -91,6 +97,5 @@ app.get('/api/kiosks/:name/:image', function(req, res){
   res.send(fs.readFileSync(path.join(__dirname, 'kiosks', req.params.name, req.params.image)));
 });
 
-app.use(express.static(__dirname + '/public'));
 app.listen(3000);
 console.log("Listening on " + 3000);

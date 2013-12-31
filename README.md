@@ -13,10 +13,12 @@ A kiosk presentation system built with Node and Angular.
 - dragging lightbox "wiggles" the screen
 - dragging arrows scrolls
 - set timeout on gallery view
-- style gallery based on C's sketch
+- ~~style gallery based on C's sketch~~
 - ~~lightbox sometimes doesn't show up behind video~~
-- round corner of video
+- ~~round corner of video (too complicated)~~
 - ~~add transparency to lightbox on video~~
+- need to swipe most of the screen width
+
 
 ####TODO
 

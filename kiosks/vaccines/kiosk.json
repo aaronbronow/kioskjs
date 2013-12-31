@@ -2,34 +2,31 @@
     "name": "Vaccines",
     "scenes": [
       {
-        "image": "kiosk-2_slideshow_1_new_vaccine.jpg",
+        "image": "kiosk-2_slideshow_1_meningitis-video.jpg",
         "video": "new-vaccine-for-africa.webm"
       },
       {
-        "image": "kiosk-2_slideshow_1_kids.jpg",
+        "image": "kiosk-2_slideshow_1_meningitis-slideshow.jpg",
         "gallery": {
           "label": "Learn more",
           "load": "gallery.html"
         }
       },
       {
-        "image": "kiosk-2_slideshow_1_donate.jpg"
-      },
-      {
-        "image": "kiosk-2_slideshow_1_kids.jpg",
+        "image": "kiosk-2_slideshow_1_Iam-video.jpg",
         "video": "i-am.webm"
       },
       {
-        "image": "kiosk-1_slideshow_1_twitter.jpg"
+        "image": "kiosk-2_slideshow_1_your-gift.jpg"
       },
       {
-        "image": "kiosk-1_slideshow_1_pathorg.jpg"
+        "image": "kiosk-2_slideshow_1_twitter.jpg"
       },
       {
-        "image": "kiosk-1_slideshow_1_facebook.jpg"
+        "image": "kiosk-2_slideshow_1_facebook.jpg"
       },
       {
-        "image": "kiosk-1_slideshow_1_stevedavis_02.jpg"
+        "image": "kiosk-2_slideshow_1_stevedavis.jpg"
       }
     ]
 }

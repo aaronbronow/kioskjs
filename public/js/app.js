@@ -82,8 +82,8 @@ kioskApp.service('slideShow', function($rootScope, $timeout) {
           e.preventDefault();
         });
         
-        $('a.play-video').css('left', ($rootScope.config.viewportWidth-64)/2 + 'px')
-          .css('top', ($rootScope.config.viewportHeight-64)/2 + 'px')
+        $('a.play-video').css('left', '524px')
+          .css('top', ($rootScope.config.viewportHeight-96)/2 + 'px')
           .click(function(e) {
             e.preventDefault();
             sliderCssHeight = $('#slider').css('height');
@@ -91,16 +91,21 @@ kioskApp.service('slideShow', function($rootScope, $timeout) {
             $('a.close').css('left', ($rootScope.config.viewportWidth - 350) + 'px').css('top', '139px');
           });
         
-        $('a.learn-more').css('left', ($rootScope.config.viewportWidth-200)/2 + 'px')
-          .css('top', ($rootScope.config.viewportHeight-80-80) + 'px')
+        $('a.learn-more').css('left', '1102px')
+          .css('top', ($rootScope.config.viewportHeight-24)/2 + 'px')
           .click(function(e) {
             sliderCssHeight = $('#slider').css('height');
             $('div.gallery div.view').css('height', ($rootScope.config.viewportHeight) + 'px');
             $('div.gallery div.thumbnails').css('height', ($rootScope.config.viewportHeight + 72) + 'px');
-            
+            $('a.close').css('left', ($rootScope.config.viewportWidth - 75 - 30) + 'px').css('top', '40px');
+            $('div.gallery div.caption').show();
+      
             $('div.gallery div.thumbnails img').click(function(e) {
               $('div.gallery div.view img').attr('src', $(this).data('big'));
+              $('div.gallery div.caption').html($(this).data('caption'));
             });
+            
+            $('div.gallery div.thumbnails img').first().click();
             
             e.preventDefault();
           });  

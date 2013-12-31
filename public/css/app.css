@@ -64,16 +64,15 @@ p.caption{
 }
 a.learn-more {
   position: absolute;
-  display: inline-block;
-  width: 200px;
-  line-height: 80px;
+  display: block;
+  width: 355px;
+  height: 73px;
+  text-indent: -99999px;
   z-index: 10;
-  background-color: #db8a33;
-  border-radius: 10px;
-  transition: all .15s ease-in-out;
+  background-image: url('../img/Slideshow_button.png');
 }
 a.close {
-  display: inline-block;
+  display: block;
   background-repeat: no-repeat;
   background-position-y: bottom;
   width: 64px;
@@ -85,7 +84,7 @@ a.close {
   background-image: url('../img/close.png');
 }
 a.arrow {
-  display: inline-block;
+  display: block;
   background-repeat: no-repeat;
   background-position-y: bottom;
   width: 128px;
@@ -103,11 +102,11 @@ a#right{
 }
 a.play-video {
   display: inline-block;
-  background-image: url('../img/play.png');
+  background-image: url('../img/Play_button.png');
   background-repeat: no-repeat;
   background-position-y: center;
-  width: 64px;
-  height: 64px;
+  width: 251px;
+  height: 192px;
   text-index: -99999px;
   position: absolute;
   z-index: 10;
@@ -134,13 +133,45 @@ div.lightbox video {
 div.gallery {
 
 }
+div.gallery div.gallery-left {
+  width: 629px;
+  float: left;
+}
+div.gallery div.gallery-left div.caption {
+  height: 345px;
+  overflow: hidden;
+  color: #fff;
+  display: none;
+  font-size: 20pt;
+  line-height: 28pt;
+}
+div.gallery div.caption span.credit {
+  display: inline-block;
+  padding-top: 1em;
+  font-weight: normal;
+  font-style: italic;
+  font-size: 13pt;
+}
 div.gallery div.thumbnails {
   background-color: #585858;
   padding: 72px 72px 0px 72px;
 }
 div.gallery div.thumbnails img {
-  padding-bottom: 32px;
+  width: 180px;
+  margin-bottom: 32px;
+  border-radius: 10px;
+  transition: all .15s ease-in-out;
+}
+div.gallery div.thumbnails img:nth-child(even) {
+  margin-left: 90px;
 }
 div.gallery div.view {
- 
+  overflow: hidden;
+  background-color: #585858;
+  padding: 72px 72px 72px 0px;
+}
+div.gallery div.view img {
+  border-radius: 10px;
+  transition: all .15s ease-in-out;
+  width: 100%;
 }
