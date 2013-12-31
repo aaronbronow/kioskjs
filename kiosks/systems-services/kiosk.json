@@ -2,27 +2,24 @@
     "name": "Systems & Services",
     "scenes": [
       {
-        "image": "kiosk-3_slideshow_1_sure.jpg",
+        "image": "kiosk-3_slideshow_1_surestart-video.jpg",
         "video": "more-reasons.webm"
       },
       {
-        "image": "kiosk-3_slideshow_1_mom.jpg",
+        "image": "kiosk-3_slideshow_1_powermom-video.jpg",
         "video": "mom.webm"
-      },      
-      {
-        "image": "kiosk-2_slideshow_1_donate.jpg"
       },
       {
-        "image": "kiosk-1_slideshow_1_twitter.jpg"
+        "image": "kiosk-3_slideshow_1_twitter.jpg"
       },
       {
-        "image": "kiosk-1_slideshow_1_pathorg.jpg"
+        "image": "kiosk-3_slideshow_1_facebook.jpg"
       },
       {
-        "image": "kiosk-1_slideshow_1_facebook.jpg"
+        "image": "kiosk-3_slideshow_1_stevequote.jpg"
       },
       {
-        "image": "kiosk-1_slideshow_1_stevedavis_02.jpg"
+        "image": "kiosk-3_slideshow_1_donate.jpg"
       }
     ]
 }

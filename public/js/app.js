@@ -48,6 +48,7 @@ kioskApp.service('slideShow', function($rootScope, $timeout) {
         auto: $rootScope.config.auto,
         continuous: $rootScope.config.continuous,
         disableScroll: true,
+        speed: 1000,
         callback: function(event) {
           if(event.type && event.type == "touchmove"){
             slideShowService.pause(true);
@@ -60,20 +61,28 @@ kioskApp.service('slideShow', function($rootScope, $timeout) {
         var leftButton = $('a#left');
         var rightButton = $('a#right');
         
-        leftButton.show().css('height', $rootScope.config.viewportHeight + 'px');
+        leftButton.show().css('top', ($rootScope.config.viewportHeight - 128) + 'px');
         leftButton.click(function(e){
           e.preventDefault();
           slideShowService.pause(true);
           window.kioskSwipe.prev();
         });
+        leftButton.on('dragstart', function(e){
+          e.preventDefault();
+          window.kioskSwipe.prev();
+        });
         
-        rightButton.show().css('height', $rootScope.config.viewportHeight + 'px')
+        rightButton.show().css('top', ($rootScope.config.viewportHeight - 128) + 'px')
           .css('right', '0px');
         rightButton.click(function(e){
           e.preventDefault();
           slideShowService.pause(true);
           window.kioskSwipe.next();
         });
+        rightButton.on('dragstart', function(e){
+          e.preventDefault();
+          window.kioskSwipe.next();
+        })
         
         // HACK this width is a magic number
         $('#slider p.caption').css('width', '800px');
@@ -131,7 +140,7 @@ kioskApp.run(function($rootScope) {
   $rootScope.config = {
     viewportHeight: $(window).height(),
     viewportWidth: $(window).width(),
-    auto: 5000,
+    auto: 8000,
     continuous: true,
     touchTimeout: 5000
   };
