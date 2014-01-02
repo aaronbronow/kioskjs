@@ -67,6 +67,12 @@ kioskControllers.controller('StageCtrl', ['$scope', '$timeout', '$http', '$route
       case 'video':
         $scope.close();
         break;
+      case 'gallery':
+        clearTimeout($scope.galleryTimeout);
+        $scope.galleryTimeout = setTimeout(function(){
+          $scope.close();
+        }, 30000);
+        break;
       }
     });
       
@@ -78,8 +84,10 @@ kioskControllers.controller('StageCtrl', ['$scope', '$timeout', '$http', '$route
       $('a.arrow').hide();
       slideShow.pause();
       
-      setTimeout(function(){
-        $('#video-' + slide)[0].play();
+      $timeout(function(){
+        var video = $('#video-' + slide)[0];
+        video.currentTime = 0;
+        video.play();
       }, 100);
     };
     
@@ -90,6 +98,10 @@ kioskControllers.controller('StageCtrl', ['$scope', '$timeout', '$http', '$route
       $('a.close').show();
       $('a.arrow').hide();
       slideShow.pause();
+      clearTimeout($scope.galleryTimeout);
+      $scope.galleryTimeout = setTimeout(function(){
+        $scope.close();
+      }, 30000);
     };
     
     $scope.close = function(){
@@ -99,11 +111,12 @@ kioskControllers.controller('StageCtrl', ['$scope', '$timeout', '$http', '$route
       $('div.gallery div.caption').hide();
       var video = $('#video-' + $scope.currentSlide)[0];
       if(video && typeof(video) != 'undefined'){
+        video.currentTime = 0;
         video.pause();
       }
+      clearTimeout($scope.galleryTimeout);
       slideShow.continue();
     };
-    
 
   }]
 );

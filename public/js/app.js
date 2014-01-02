@@ -53,7 +53,7 @@ kioskApp.service('slideShow', function($rootScope, $timeout) {
         window.kioskSwipe.kill();
         leftButton.unbind('click').unbind('dragstart');
         rightButton.unbind('click').unbind('dragstart');
-        closeButton.unbind('click').unbind('dragstart');
+        // closeButton.unbind('click').unbind('dragstart');
         // $('a.play-video').unbind('click');
         // $('a.learn-more').unbind('click');
         // $('a.lightbox').unbind('click');
@@ -130,6 +130,7 @@ kioskApp.service('slideShow', function($rootScope, $timeout) {
             $('div.gallery div.thumbnails img').click(function(e) {
               $('div.gallery div.view img').attr('src', $(this).data('big'));
               $('div.gallery div.caption').html($(this).data('caption'));
+              $rootScope.$broadcast('touch', 'gallery');
             });
             
             $('div.gallery div.thumbnails img').first().click();
@@ -144,6 +145,8 @@ kioskApp.service('slideShow', function($rootScope, $timeout) {
       });
       
       $('.extra .video, .extra video').on('click', function(e) {
+        $rootScope.$broadcast('touch', 'video');
+      }).on('ended', function(e) {
         $rootScope.$broadcast('touch', 'video');
       });
       
