@@ -85,6 +85,9 @@ kioskApp.service('slideShow', function($rootScope, $timeout) {
           e.preventDefault();
           window.kioskSwipe.prev();
         });
+        leftButton.on('touchmove', function(e){
+          e.preventDefault();
+        });
         
         rightButton.show().css('top', ($rootScope.config.viewportHeight - 128) + 'px')
           .css('right', '0px');
@@ -96,6 +99,9 @@ kioskApp.service('slideShow', function($rootScope, $timeout) {
         rightButton.on('dragstart', function(e){
           e.preventDefault();
           window.kioskSwipe.next();
+        });
+        rightButton.on('touchmove', function(e){
+          e.preventDefault();
         });
         
         // HACK this width is a magic number
@@ -148,7 +154,6 @@ kioskApp.service('slideShow', function($rootScope, $timeout) {
         $rootScope.$broadcast('touch', 'video');
       }).on('ended', function(e) {
         $rootScope.$broadcast('touch', 'video');
-        $(document.body).click();
       });
       
       $(window).on('resize', function() {

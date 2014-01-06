@@ -116,6 +116,7 @@ kioskControllers.controller('StageCtrl', ['$scope', '$timeout', '$http', '$route
       }
       clearTimeout($scope.galleryTimeout);
       slideShow.continue();
+      $('#slider').click();
     };
 
   }]
