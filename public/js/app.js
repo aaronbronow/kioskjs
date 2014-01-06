@@ -113,7 +113,10 @@ kioskApp.service('slideShow', function($rootScope, $timeout) {
         closeButton.on('dragstart', function(e){
           e.preventDefault();
           $rootScope.$broadcast('touch', 'lightbox');
-        })
+        });
+        closeButton.on('touchmove', function(e){
+          e.preventDefault();
+        });
         
         $('a.play-video').css('left', '524px')
           .css('top', ($rootScope.config.viewportHeight-96)/2 + 'px')
@@ -154,6 +157,10 @@ kioskApp.service('slideShow', function($rootScope, $timeout) {
         $rootScope.$broadcast('touch', 'video');
       }).on('ended', function(e) {
         $rootScope.$broadcast('touch', 'video');
+      }).on('dragstart', function(e){
+          e.preventDefault();
+      }).on('touchmove', function(e){
+          e.preventDefault();
       });
       
       $(window).on('resize', function() {
