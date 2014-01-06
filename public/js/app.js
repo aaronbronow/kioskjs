@@ -148,6 +148,7 @@ kioskApp.service('slideShow', function($rootScope, $timeout) {
         $rootScope.$broadcast('touch', 'video');
       }).on('ended', function(e) {
         $rootScope.$broadcast('touch', 'video');
+        $(document.body).click();
       });
       
       $(window).on('resize', function() {
