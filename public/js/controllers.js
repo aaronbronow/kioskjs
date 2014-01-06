@@ -43,7 +43,7 @@ kioskControllers.controller('PlayCtrl', ['$scope', '$timeout', '$http', '$routeP
         
           }
         }
-      }, 0);
+      }, 100);
       
     });
     

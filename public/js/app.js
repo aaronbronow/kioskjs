@@ -150,6 +150,10 @@ kioskApp.service('slideShow', function($rootScope, $timeout) {
         $rootScope.$broadcast('touch', 'video');
       });
       
+      $(window).on('resize', function() {
+        $rootScope.config.viewportHeight = $(window).height();
+      });
+      
       $rootScope.$broadcast('stateChanged', 'playing');
     }
   };
