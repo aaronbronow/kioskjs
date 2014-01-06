@@ -150,7 +150,10 @@ kioskApp.service('slideShow', function($rootScope, $timeout) {
       
       $('div.lightbox').on('click', function(e) {
         $rootScope.$broadcast('touch', 'lightbox');
-        
+      }).on('dragstart', function(e){
+          e.preventDefault();
+      }).on('touchmove', function(e){
+          e.preventDefault();
       });
       
       $('.extra .video, .extra video').on('click', function(e) {
