@@ -1,0 +1,1 @@
+node "c:\kiosk\server.js"
