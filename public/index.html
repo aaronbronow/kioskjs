@@ -36,9 +36,9 @@
   </div>
 
   <div class="stage" ng-controller="StageCtrl" ng-hide="$location.path()=='/'">
-    <a href="#" id="left" class="arrow">Previous</a>
-    <a href="#" id="right" class="arrow">Next</a>
-    <a href="#" id="close" class="close" ng-click="close()">Close</a>
+    <a id="left" class="arrow">Previous</a>
+    <a id="right" class="arrow">Next</a>
+    <a id="close" class="close" ng-click="close()">Close</a>
     <div ng-view></div>
   </div>  
   
