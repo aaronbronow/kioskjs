@@ -1,1 +1,1 @@
-node "c:\kiosk\server.js"
+node "c:\kioskjs\server.js"
