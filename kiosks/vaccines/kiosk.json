@@ -3,7 +3,7 @@
     "scenes": [
       {
         "image": "kiosk-2_slideshow_1_meningitis-video.jpg",
-        "video": "new-vaccine-for-africa.webm"
+        "video": "new-vaccine-for-africa.mov"
       },
       {
         "image": "kiosk-2_slideshow_1_meningitis-slideshow.jpg",
@@ -14,7 +14,7 @@
       },
       {
         "image": "kiosk-2_slideshow_1_Iam-video.jpg",
-        "video": "i-am.webm"
+        "video": "i-am.mp4"
       },
       {
         "image": "kiosk-2_slideshow_1_your-gift.jpg"
