@@ -86,7 +86,7 @@ kioskControllers.controller('StageCtrl', ['$scope', '$timeout', '$http', '$route
       
       $timeout(function(){
         var video = $('#video-' + slide)[0];
-        video.currentTime = 0;
+        video.load();
         video.play();
       }, 100);
     };
@@ -111,7 +111,7 @@ kioskControllers.controller('StageCtrl', ['$scope', '$timeout', '$http', '$route
       $('div.gallery div.caption').hide();
       var video = $('#video-' + $scope.currentSlide)[0];
       if(video && typeof(video) != 'undefined'){
-        video.currentTime = 0;
+        video.load();
         video.pause();
       }
       clearTimeout($scope.galleryTimeout);
